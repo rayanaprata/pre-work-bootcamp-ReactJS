@@ -6,7 +6,7 @@ Alguns assuntos que serão estudados nesta semana de Pré Work: Javascript, Type
 
 Por padrão o Javascript no navegador tem o Escopo Global, ou seja, qualquer script tem acesso a outro script.
 
-#### - [x] Módulo
+- [x] Módulo
 
  - Antigamente:
  ```
@@ -29,7 +29,7 @@ import { a } from './main'; // importando constante
 ```
 
 
-#### - [x] Bloco
+- [x] Bloco
 
 ```
 {
@@ -45,13 +45,13 @@ if (true) {
 }
 ```
 
-#### - [x] Função
+- [x] Função
 
 
-#### - [x] Estruturas Condicionais
+- [x] Estruturas Condicionais
 if, switch -> geram bloco de código e não geram valores
 
-#### - [x] Estruturas de Repetição
+- [x] Estruturas de Repetição
 for, while, do while -> geram bloco de código e não geram valores
 
 ----------
