@@ -54,6 +54,16 @@ if, switch -> geram bloco de código e não geram valores
 - [x] Estruturas de Repetição
 for, while, do while -> geram bloco de código e não geram valores
 
+- [x] Boolean -> false
+
+```
+''
+0
+null
+undefined
+false
+```
+
 ----------
 
 # Desafio do dia 01
