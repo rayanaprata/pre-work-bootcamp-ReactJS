@@ -10,7 +10,5 @@ app.innerHTML = `
 
 link.addEventListener("click", (e) => {
   e.preventDefault();
-  app.hasAttribute("hidden")
-    ? app.removeAttribute("hidden")
-    : app.setAttribute("hidden", "false");
+  app.classList.toggle("hide");
 });
