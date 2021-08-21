@@ -84,6 +84,10 @@ undefined
 false
 ```
 
+## Class Two ✨
+
+Não é recomendado utilizar propriedades do HTML para estilizar, o ideal é utilizar CSS.
+
 ---
 
 Made with 🤍 by [Rayana Prata](https://www.linkedin.com/in/rayanaprata/)
