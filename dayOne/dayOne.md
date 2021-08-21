@@ -47,6 +47,11 @@ if (true) {
 
 - [x] Função
 
+```
+() => {
+  console.log('Essa é uma função anônima');
+}
+```
 
 - [x] Estruturas Condicionais
 if, switch -> geram bloco de código e não geram valores
