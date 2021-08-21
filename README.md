@@ -2,7 +2,7 @@
 
 Repository to store my challenges made in the week of Pre-work Brainn Bootcamp.
 
-- [ ] [Challenge One](https://github.com/rayanaprata/pre-work-bootcamp-ReactJS/blob/master/challengeOne)
+- [x] [Challenge One](https://github.com/rayanaprata/pre-work-bootcamp-ReactJS/blob/master/challengeOne)
 - [ ] [Challenge Two]()
 - [ ] [Challenge Three]()
 - [ ] [Challenge Four]()
