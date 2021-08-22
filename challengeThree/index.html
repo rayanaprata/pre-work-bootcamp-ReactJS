@@ -9,10 +9,49 @@
 </head>
 
 <body>
-  <form data-js="form">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" data-js="name">
-  </form>
+
+  <div class="part1">
+    <form data-js="cars">
+      <label for="urlImg">URL Image:</label>
+      <input type="url" name="urlImg" data-js="urlImg">
+
+      <label for="brand">Brand/Model:</label>
+      <input type="text" name="brand">
+
+      <label for="year">Year:</label>
+      <input type="number" name="year">
+
+      <label for="plate">Plate:</label>
+      <input type="text" name="plate">
+
+      <label for="color">Color:</label>
+      <input type="color" name="color">
+
+      <button type="submit">Submit Car</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Brand/Model</th>
+          <th>Year</th>
+          <th>Plate</th>
+          <th>Color</th>
+        </tr>
+      </thead>
+      <tbody data-js="carsTable">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="part2">
+    <form data-js="form">
+      <label for="name">Nome:</label>
+      <input type="text" name="name" id="name" data-js="name">
+    </form>
+  </div>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 
