@@ -1,3 +1,5 @@
+import { get, post, del } from "./http";
+
 const cars = document.querySelector('[data-js="cars"]');
 const carsTable = document.querySelector('[data-js="carsTable"]');
 const url = "http://localhost:3333/cars";
@@ -39,7 +41,7 @@ function createColor(value) {
   return td;
 }
 
-cars.addEventListener("submit", (e) => {
+cars.addEventListener("submit", async (e) => {
   e.preventDefault();
   const getElement = getFormElement(e);
 
@@ -50,6 +52,18 @@ cars.addEventListener("submit", (e) => {
     plate: getElement("plate").value,
     color: getElement("color").value,
   };
+
+  const result = await post(url, data);
+
+  if (result.error) {
+    console.log("Error when registering", result.message);
+    return;
+  }
+
+  const noContent = document.querySelector('[data-js="no-content"]');
+  if (noContent) {
+    carsTable.removeChild(noContent);
+  }
 
   createTableRow(data);
 
@@ -67,12 +81,43 @@ function createTableRow(data) {
   ];
 
   const tr = document.createElement("tr");
+  tr.dataset.plate = data.plate;
+
   elements.forEach((element) => {
     const td = elementTypes[element.type](element.value);
     tr.appendChild(td);
   });
 
+  const button = document.createElement("button");
+  button.textContent = "Delete";
+  button.dataset.plate = data.plate;
+
+  button.addEventListener("click", handleDelete);
+
+  tr.appendChild(button);
+
   carsTable.appendChild(tr);
+}
+
+async function handleDelete(e) {
+  const button = e.target;
+  const plate = button.dataset.plate;
+
+  const result = await del(url, { plate });
+
+  if (result.error) {
+    console.log("Error deleting", result.message);
+    return;
+  }
+
+  const tr = document.querySelector(`tr[data-plate="${plate}"]`);
+  carsTable.removeChild(tr);
+  button.removeEventListener("click", handleDelete);
+
+  const allTrs = carsTable.querySelector("tr");
+  if (!allTrs) {
+    createNoCarRow();
+  }
 }
 
 function createNoCarRow() {
@@ -82,17 +127,16 @@ function createNoCarRow() {
   td.setAttribute("colspan", thsLength);
   td.textContent = "No cars found";
 
+  tr.dataset.js = "no-content";
   tr.appendChild(td);
   carsTable.appendChild(tr);
 }
 
 async function main() {
-  const result = await fetch(url)
-    .then((r) => r.json())
-    .catch((e) => ({ error: true, message: e.message }));
+  const result = await get(url);
 
   if (result.error) {
-    console.error("Error fetching cars", result.message);
+    console.log("Erro ao buscar carros", result.message);
     return;
   }
 
