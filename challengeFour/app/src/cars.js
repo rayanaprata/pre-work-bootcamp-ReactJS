@@ -136,7 +136,7 @@ async function main() {
   const result = await get(url);
 
   if (result.error) {
-    console.log("Erro ao buscar carros", result.message);
+    console.log("Error fetching cars", result.message);
     return;
   }
 
