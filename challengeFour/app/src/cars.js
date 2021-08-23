@@ -1,5 +1,6 @@
 const cars = document.querySelector('[data-js="cars"]');
 const carsTable = document.querySelector('[data-js="carsTable"]');
+const url = "http://localhost:3333/cars";
 
 const getFormElement = (event) => (elementName) => {
   console.log(event.target.elements[elementName]);
@@ -12,10 +13,11 @@ const elementTypes = {
   color: createColor,
 };
 
-function createImage(value) {
+function createImage(data) {
   const td = document.createElement("td");
   const img = document.createElement("img");
-  img.src = value;
+  img.src = data.src;
+  img.alt = data.alt;
   img.width = 100;
   td.appendChild(img);
   return td;
@@ -41,12 +43,27 @@ cars.addEventListener("submit", (e) => {
   e.preventDefault();
   const getElement = getFormElement(e);
 
+  const data = {
+    image: getElement("image").value,
+    brandModel: getElement("brand-model").value,
+    year: getElement("year").value,
+    plate: getElement("plate").value,
+    color: getElement("color").value,
+  };
+
+  createTableRow(data);
+
+  e.target.reset();
+  image.focus();
+});
+
+function createTableRow(data) {
   const elements = [
-    { type: "image", value: getElement("image").value },
-    { type: "text", value: getElement("brand-model").value },
-    { type: "text", value: getElement("year").value },
-    { type: "text", value: getElement("plate").value },
-    { type: "color", value: getElement("color").value },
+    { type: "image", value: { src: data.image, alt: data.brandModel } },
+    { type: "text", value: data.brandModel },
+    { type: "text", value: data.year },
+    { type: "text", value: data.plate },
+    { type: "color", value: data.color },
   ];
 
   const tr = document.createElement("tr");
@@ -56,7 +73,35 @@ cars.addEventListener("submit", (e) => {
   });
 
   carsTable.appendChild(tr);
+}
 
-  e.target.reset();
-  image.focus();
-});
+function createNoCarRow() {
+  const tr = document.createElement("tr");
+  const td = document.createElement("td");
+  const thsLength = document.querySelectorAll("table th").length;
+  td.setAttribute("colspan", thsLength);
+  td.textContent = "No cars found";
+
+  tr.appendChild(td);
+  carsTable.appendChild(tr);
+}
+
+async function main() {
+  const result = await fetch(url)
+    .then((r) => r.json())
+    .catch((e) => ({ error: true, message: e.message }));
+
+  if (result.error) {
+    console.error("Error fetching cars", result.message);
+    return;
+  }
+
+  if (result.length === 0) {
+    createNoCarRow();
+    return;
+  }
+
+  result.forEach(createTableRow);
+}
+
+main();
