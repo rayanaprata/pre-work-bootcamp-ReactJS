@@ -5,7 +5,7 @@ Repository to store my challenges made in the week of Pre-work Brainn Bootcamp.
 - [x] [Challenge One](https://github.com/rayanaprata/pre-work-bootcamp-ReactJS/blob/master/challengeOne)
 - [x] [Challenge Two](https://github.com/rayanaprata/pre-work-bootcamp-ReactJS/tree/master/challengeTwo)
 - [x] [Challenge Three](https://github.com/rayanaprata/pre-work-bootcamp-ReactJS/tree/master/challengeThree)
-- [ ] [Challenge Four]()
+- [x] [Challenge Four](https://github.com/rayanaprata/pre-work-bootcamp-ReactJS/tree/master/challengeFour)
 - [ ] [Challenge Five]()
 
 [Click here to access the official repository with the challenges](https://github.com/brainnco/desafios-pre-work-b-academy). 💻
