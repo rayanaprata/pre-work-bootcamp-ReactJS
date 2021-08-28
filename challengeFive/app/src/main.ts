@@ -7,7 +7,7 @@ const table = document.querySelector<HTMLTableElement>('[data-js="table"]')!
 
 type GetFormElement = (target: HTMLFormElement) =>
   (elementName: string) =>
-  HTMLInputElement
+    HTMLInputElement
 
 const getFormElement: GetFormElement = (target) => (elementName) => {
   return target[elementName]
@@ -24,7 +24,7 @@ type CreateImage = {
   alt: string
 }
 
-function createImage (data: CreateImage) {
+function createImage(data: CreateImage) {
   const td = document.createElement('td')
   const img = document.createElement('img')
   img.src = data.src
@@ -34,13 +34,13 @@ function createImage (data: CreateImage) {
   return td
 }
 
-function createText (value: string) {
+function createText(value: string) {
   const td = document.createElement('td')
   td.textContent = value
   return td
 }
 
-function createColor (value: string) {
+function createColor(value: string) {
   const td = document.createElement('td')
   const div = document.createElement('div')
   div.style.width = '100px'
@@ -96,7 +96,7 @@ form.addEventListener('submit', async (e) => {
   image.focus()
 })
 
-function createTableRow (data: Car) {
+function createTableRow(data: Car) {
   const elements = [
     { type: 'image', value: { src: data.image, alt: data.brandModel } },
     { type: 'text', value: data.brandModel },
@@ -143,7 +143,7 @@ type DeleteBody = {
   plate: string
 }
 
-async function handleDelete (e: MouseEvent) {
+async function handleDelete(e: MouseEvent) {
   const button = e.target as HTMLButtonElement
 
   if (!button) {
@@ -172,7 +172,7 @@ async function handleDelete (e: MouseEvent) {
   }
 }
 
-function createNoCarRow () {
+function createNoCarRow() {
   const tr = document.createElement('tr')
   const td = document.createElement('td')
   const thsLength = document.querySelectorAll('table th').length
@@ -184,7 +184,7 @@ function createNoCarRow () {
   table.appendChild(tr)
 }
 
-async function main () {
+async function main() {
   const result = await get(url)
 
   if (result.error) {
